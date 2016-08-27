@@ -255,7 +255,7 @@
     <link href="https://docdocde.github.io/2016/08/27/crawder/"/>
     <id>https://docdocde.github.io/2016/08/27/crawder/</id>
     <published>2016-08-27T07:32:40.000Z</published>
-    <updated>2016-08-27T11:24:50.181Z</updated>
+    <updated>2016-08-27T15:11:49.457Z</updated>
     
     <content type="html"><![CDATA[<h2 id="一、简单的页面爬取"><a href="#一、简单的页面爬取" class="headerlink" title="一、简单的页面爬取"></a>一、简单的页面爬取</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">var http = require(<span class="string">'http'</span>);</div><div class="line">var fs = require(<span class="string">'fs'</span>);</div><div class="line">var url = <span class="string">'http://www.jxnu.edu.cn/'</span>;</div><div class="line"></div><div class="line">http</div><div class="line">	.get(url, <span class="keyword">function</span>(res)&#123;</div><div class="line">		var html=<span class="string">''</span>;</div><div class="line"></div><div class="line">		// res.setEncoding(<span class="string">'utf8'</span>);</div><div class="line">		res.on(<span class="string">'data'</span>, <span class="keyword">function</span>(data)&#123;</div><div class="line">			html += data;</div><div class="line">			// console.log(Buffer.isBuffer(data));</div><div class="line">		&#125;)</div><div class="line">		res.on(<span class="string">'end'</span>,<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">			// html.toString(<span class="string">'utf8'</span>);</div><div class="line">			console.log(res.header());</div><div class="line">		&#125;)</div><div class="line">	&#125;)</div><div class="line">	.on(<span class="string">'error'</span>,<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">			console.log(<span class="string">'获取失败！'</span>);</div><div class="line">		&#125;)</div></pre></td></tr></table></figure>
 <h3 id="结果"><a href="#结果" class="headerlink" title="结果  "></a>结果  <a id="more"></a></h3><p><img src="https://cl.ly/2v3C211D0H1T/Image%202016-08-27%20at%203.58.00%20PM.png" alt="结果"></p>
@@ -276,7 +276,7 @@
     
       <category term="Js" scheme="https://docdocde.github.io/tags/Js/"/>
     
-      <category term="Nodejs" scheme="https://docdocde.github.io/tags/Nodejs/"/>
+      <category term="NodeJs" scheme="https://docdocde.github.io/tags/NodeJs/"/>
     
   </entry>
   
