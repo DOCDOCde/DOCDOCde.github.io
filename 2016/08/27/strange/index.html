@@ -1,0 +1,35 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="DOC"><meta name="description" content="一、事件重复绑定在用jquery做分页的时候。在本页测试分页都没有问题，可是只要进入别的页面再回到博客页，点击下一页的按钮它就会跳转两页。再去一次别的页面回到博客页点击下一页，它就会跳转三页。后来才发现是事件重复绑定惹的祸解决办法：unbind()函数规定从指定元素上删除"><meta name="keywords" content="Js,jQuery"><title>jQuery里奇怪的事 · DOCblog</title><link rel="icon" href="/favicon.ico"><link rel="canonical" href="https://docdocde.github.io/2016/08/27/strange/"><link rel="stylesheet" href="/fonts/iconfont/iconfont.css"><link rel="stylesheet" href="/css/style.css"><script type="text/javascript">var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?c034ea5bf3796a9ac7ebc5275a60fc0d";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script type="text/javascript">(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'Your Google Analytics ID', 'auto');
+ga('send', 'pageview');</script></head><body><div id="main"><header><a href="/." class="logo">DOCblog</a><ul class="nav"><li class="nav-link"><a href="/" target="_self">首页</a></li><li class="nav-link"><a href="/archives/" target="_self">分类</a></li><li class="nav-link"><a href="/tags/" target="_self">标签</a></li><li class="nav-link"><a href="/about/" target="_self">关于我</a></li></ul></header><section id="container"><article class="post"><h1 class="post-title">jQuery里奇怪的事</h1><span class="post-time">2016年8月27日</span><div id="sidebar" class="post-sidebar"><h3 class="heading">Contents</h3><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、事件重复绑定"><span class="toc-text">一、事件重复绑定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、DOM对象与jquery对象"><span class="toc-text">二、DOM对象与jquery对象</span></a></li></ol></div><div class="post-content"><h2 id="一、事件重复绑定"><a href="#一、事件重复绑定" class="headerlink" title="一、事件重复绑定"></a>一、事件重复绑定</h2><blockquote>
+<p>在用jquery做分页的时候。在本页测试分页都没有问题，可是只要进入别的页面再回到博客页，点击下一页的按钮它就会跳转两页。再去一次别的页面回到博客页点击下一页，它就会跳转三页。后来才发现是事件重复绑定惹的祸</p>
+</blockquote>
+<p><strong>解决办法</strong>： <em>unbind()函数</em><br>规定从指定元素上删除的一个或多个事件处理程序。如果没有规定参数，unbind() 方法会删除指定元素的所有事件处理程序。unbind() 方法移除被选元素的事件处理程序。该方法能够移除所有的或被选的事件处理程序，或者当事件发生时终止指定函数的运行。ubind() 适用于任何通过 jQuery 附加的事件处理程序。<br>代码在\dist\public\js\blog.js</p>
+<h2 id="二、DOM对象与jquery对象"><a href="#二、DOM对象与jquery对象" class="headerlink" title="二、DOM对象与jquery对象"></a>二、DOM对象与jquery对象</h2><blockquote>
+<p>用$(selector)获取到东西之后使用for进行遍历得到$(selector)[i]，但是当我用$(selector)[i].css之类的语法时就会出错。原来$(selector)是DOM对象，所有无法使用jquery的语法。$(selector)才是jquery对象</p>
+</blockquote>
+<a id="more"></a>
+<p><strong>解决办法</strong>：<em>将DOM对象转换为jquery对象</em><br>具体语法为$($(selector)[i])。这样就将DOM对象转换为jquery对象了，就可尽情的使用jquery的语法对$(selector)[i]操作了。<br>代码在\dist\public\js\blog.js</p>
+</div></article><div class="tags"><a href="/tags/Js/">Js</a><a href="/tags/jQuery/">jQuery</a></div><div class="paginator"><a href="/2016/08/27/fellAboutNodejs/" class="prev"><i class="iconfont icon-left"></i><span> Prev</span></a><a href="/2016/08/27/position/" class="next"><span>Next</span><i class="iconfont icon-right"></i></a></div><section id="comments"><div id="disqus_thread"></div></section><script type="text/javascript">var disqus_config = function () {
+    this.page.url = 'https://docdocde.github.io/2016/08/27/strange/';
+    this.page.identifier = '2016/08/27/strange/';
+    this.page.title = 'jQuery里奇怪的事';
+};
+(function() {
+var d = document, s = d.createElement('script');
+
+s.src = '//Your disqus ID.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();</script></section><footer><div class="copyright"><p class="power">Powered by <a href="https://hexo.io/">Hexo</a> and Theme by <a href="https://github.com/ahonn/hexo-theme-even"> Even</a></p><p class="since">&copy;2016<span class="heart"><i class="iconfont icon-heart"></i></span><span class="author">DOC</span></p></div><label id="back2top"><i class="iconfont icon-up"></i></label></footer></div><script src="/js/zepto.min.js"></script><script src="/js/theme.js"></script></body></html>
